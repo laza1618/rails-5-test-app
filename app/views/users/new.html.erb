@@ -1,0 +1,41 @@
+<% content_for(:title, 'User#new') %>
+
+<%= form_for(@user) do |f| %>
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :name %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :name , class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :age %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :age , class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :gender %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.select :gender, User.genders, {}, {class: "form-control"} %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :_type %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.select :_type, User.types, {},class: "form-control" %>
+    </div>
+  </div>
+
+  <%= f.submit 'OK', class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,30 @@
+<%= content_for(:title, "Users") %>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= link_to 'Create User', new_user_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+      <th>Type</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.age %></td>
+          <td><%= user.gender %></td>
+          <td><%= user._type %></td>
+          <td><%= button_to('Level Up', {action: 'level_up', method: :post, id: user.id}, class: "btn") %></td>
+          <td><%= link_to('Edit', send("edit_#{user._type.downcase}_path", user.id)) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
