@@ -48,4 +48,4 @@ gem 'mongoid', '~> 6.0'
 # bootstrap
 gem "therubyracer"
 gem "less-rails"
-gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'bootstrap', '~> 4.0.0.alpha6'
