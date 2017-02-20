@@ -9,12 +9,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    flash["success"] = 'New User Created !!'
     redirect_to users_path
   end
 
   def level_up
     @user = User.find(params[:id])
     @user.level_up
+    flash["notice"] = "Level Up on #{@user.name} !!"
+    redirect_to users_path
   end
 
   private
