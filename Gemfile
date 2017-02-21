@@ -40,12 +40,15 @@ group :development do
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails', '~> 1.2'
   gem 'capistrano-bundler', '~> 1.2'
+  gem 'capistrano-rvm'
 end
 
 # mongoid
 gem 'mongoid', '~> 6.0'
 
 # bootstrap
-gem "therubyracer"
-gem "less-rails"
+gem 'therubyracer'
 gem 'bootstrap', '~> 4.0.0.alpha6'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end

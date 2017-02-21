@@ -10,6 +10,9 @@ server "ec2-52-205-178-23.compute-1.amazonaws.com", user: "deployer", roles: %w{
 set :rails_env, "production"
 set :stage, :production
 
+# we use rvm in the server
+set :rvm_type, :system
+
 # role-based syntax
 # ==================
 
