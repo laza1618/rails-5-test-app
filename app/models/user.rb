@@ -1,5 +1,7 @@
 class User
   include Mongoid::Document
+  include SearchableUser
+
   field :name, type: String
   field :age, type: Integer
   field :gender, type: String
