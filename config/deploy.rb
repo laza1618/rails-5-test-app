@@ -42,16 +42,16 @@ namespace :deploy do
   end
 
   desc 'Elasticsearch : Index creation + Data import'
-  task :import_to_elasticsearch do
-    on roles(:app) do
+  task :build_es_index do
+    on roles(:app), in: :sequence, wait: 5 do
       within "#{fetch(:deploy_to)}/current" do
         with rails_env: fetch(:rails_env) do
-          execute :rake, 'environment elasticsearch:import:model CLASS='User' FORCE=y'
+          execute :rake, "environment elasticsearch:import:model CLASS='User' FORCE=y"
         end
       end
     end
   end
 
   after :publishing, :restart
-  after :publishing, :import_to_elasticsearch
+  after :finishing, :build_es_index
 end

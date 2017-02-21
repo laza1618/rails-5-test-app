@@ -1,6 +1,6 @@
 # Connect to specific Elasticsearch cluster
 # in the production server we set the ELASTICSEARCH_URL environment to point to the Amazon Elasticsearch Service
-ELASTICSEARCH_URL = ENV['ELASTICSEARCH_URL'] || 'http://localhost:9200'
+ELASTICSEARCH_URL = Rails.env.production? ? 'https://search-elaztic-3wspesvf2r36mcus7yeeumoeza.us-east-1.es.amazonaws.com' : 'http://localhost:9200'
 
 Elasticsearch::Model.client = Elasticsearch::Client.new host: ELASTICSEARCH_URL
 
