@@ -4,14 +4,18 @@ class User
   field :age, type: Integer
   field :gender, type: String
 
+
   def self.genders
     ['man', 'woman']
   end
 
   def self.types
-    ['Manager', 'Employee']
+    ['Manager', 'Employee', 'Intern']
   end
 
   def level_up
+  end
+
+  def hit_against_wall
   end
 end

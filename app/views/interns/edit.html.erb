@@ -1,0 +1,25 @@
+<% content_for(:title, 'Intern#Edit') %>
+
+<%= form_for(@intern) do |f| %>
+  <%= render partial: 'users/form_common_field', locals: { f: f } %>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :work_load %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :work_load, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <div class="col-sm-1">
+      <%= f.label :skills %>
+    </div>
+    <div class="col-sm-11">
+      <%= f.text_field :skills, class: "form-control", value: @intern.skills.join(",") %>
+    </div>
+  </div>
+
+  <%= f.submit 'OK', class: 'btn btn-primary' %>
+<% end %>

@@ -20,8 +20,14 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create] do
     member do
       post :level_up
+      post :hit_against_wall
+    end
+    collection do
+      post :set_level_up
+      post :set_hit_against_wall
     end
   end
   resources :employees, only: [:new, :edit, :update]
   resources :managers, only: [:new, :edit, :update]
+  resources :interns, only: [:new, :edit, :update]
 end
