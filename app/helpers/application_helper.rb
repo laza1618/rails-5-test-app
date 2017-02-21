@@ -6,8 +6,8 @@ module ApplicationHelper
         type = case message_type
           when "notice"
             "info"
-          when "alert"
-            "warning"
+          when "error"
+            "danger"
           else
             message_type
         end

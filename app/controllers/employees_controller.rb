@@ -11,6 +11,9 @@ class EmployeesController < ApplicationController
     if @employee.update(employee_params)
       flash["success"] = 'Manager Updated !!'
       redirect_to users_path
+    else
+      flash["error"] = @employee.errors.full_messages
+      render :edit
     end
   end
 

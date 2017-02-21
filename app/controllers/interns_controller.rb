@@ -8,6 +8,9 @@ class InternsController < ApplicationController
     if @intern.update(intern_params)
       flash["success"] = 'Intern Updated !!'
       redirect_to users_path
+    else
+      flash["error"] = @intern.errors.full_messages
+      render :edit
     end
   end
 

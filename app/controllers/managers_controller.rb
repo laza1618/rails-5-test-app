@@ -11,6 +11,9 @@ class ManagersController < ApplicationController
     if @manager.update(manager_params)
       flash["success"] = 'Manager Updated !!'
       redirect_to users_path
+    else
+      flash["error"] = @manager.errors.full_messages
+      render :edit
     end
   end
 

@@ -4,6 +4,7 @@ class User
   field :age, type: Integer
   field :gender, type: String
 
+  validates :name, presence: true
 
   def self.genders
     ['man', 'woman']

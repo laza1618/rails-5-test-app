@@ -10,8 +10,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    flash["success"] = 'New User Created !!'
-    redirect_to users_path
+    if @user.errors.blank?
+      flash["success"] = 'New User Created !!'
+      redirect_to users_path
+    else
+      flash["error"] = @user.errors.full_messages
+      render :new
+    end
   end
 
   def level_up
