@@ -1,0 +1,38 @@
+<% if @users.length == 0 %>
+  <p class="mt-5">No results ...</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+        <th></th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Type</th>
+        <th></th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= check_box_tag("select", user.id, false) %></td>
+        <td><%= user.name %></td>
+        <td><%= user.age %></td>
+        <td><%= user.gender %></td>
+        <td><%= user._type %></td>
+        <td>
+          <div class="row">
+            <div class="col-sm-4">
+              <%= button_to('Level Up', {action: 'level_up', method: :post, id: user.id}, class: "btn") %>
+            </div>
+            <div class="col-sm-4">
+              <%= button_to('Hit Against Wall', {action: 'hit_against_wall', method: :post, id: user.id}, class: "btn btn-danger") %>
+            </div>
+            <div class="col-sm-4">
+              <%= link_to('Edit', send("edit_#{user._type.downcase}_path", user.id)) %>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

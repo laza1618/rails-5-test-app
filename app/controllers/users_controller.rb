@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all.to_a
+    @users = User.all
+  end
+
+  def search
+    if params[:term].blank?
+      @users = User.all
+    else
+      @users = User.search(params[:term])
+    end
   end
 
   def new

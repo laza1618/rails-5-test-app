@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     collection do
       post :set_level_up
       post :set_hit_against_wall
+      get :search
     end
   end
   resources :employees, only: [:new, :edit, :update]

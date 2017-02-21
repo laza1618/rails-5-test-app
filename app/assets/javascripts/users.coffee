@@ -1,6 +1,6 @@
 initEvents = ->
   # update input hidden field on each checkbox update
-  $("input[name='select']").on('change', (e) ->
+  $(document).on('change', "input[name='select']", (e) ->
     $selectedInput = $("input[name='select']:checked")
     selectedIds = []
     $selectedInput.each((key, input) ->
@@ -20,6 +20,17 @@ initEvents = ->
     e.preventDefault()
     formId = $(e.currentTarget).data('form')
     $("##{formId}").submit()
+  )
+
+  # Handle search
+  $('.search-input').on('keyup', (e) ->
+    $.ajax
+      type: 'GET'
+      url: '/users/search'
+      dataType: 'script'
+      format: 'js'
+      data:
+        term: e.currentTarget.value
   )
 
 $(document).on('turbolinks:load', initEvents)

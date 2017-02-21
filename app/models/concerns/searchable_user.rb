@@ -26,7 +26,7 @@ module SearchableUser
           bool: {
             must: [
               {
-                match: {
+                match_phrase_prefix: {
                   name: query
                 }
               }
