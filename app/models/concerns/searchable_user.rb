@@ -3,6 +3,7 @@ module SearchableUser
 
   included do
     include Elasticsearch::Model
+    include Elasticsearch::Model::Callbacks
 
     #Elasticsearch index name
     index_name 'myjobglasses_homework_user'
@@ -14,14 +15,8 @@ module SearchableUser
       end
     end
 
-    # Method for Indexing and importing all the data to elasticsearch
-    def self.import_to_es
-      User.__elasticsearch__.create_index! force: true
-      User.import
-    end
-
     def as_indexed_json(options={})
-      as_json(only: [:name])
+      as_json(only: [:id, :type, :name])
     end
 
     #  Method for searching record using Elasticsearch, it will return the 50 firsts results
@@ -32,8 +27,7 @@ module SearchableUser
             must: [
               {
                 match: {
-                  query: query,
-                  field: :name
+                  name: query
                 }
               }
             ]

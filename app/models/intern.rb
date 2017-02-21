@@ -2,6 +2,10 @@ class Intern < User
   field :work_load, type: Integer , default: 13
   field :skills, type: Array, default: []
 
+  #Elasticsearch index name
+  index_name 'myjobglasses_homework_user'
+  document_type 'user'
+
   after_update do |user|
     if user.work_load >= 20 || user.work_load < 0 || user.skills.length >= 7
       user.destroy

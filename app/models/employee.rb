@@ -1,6 +1,10 @@
 class Employee < User
   field :skills_number, type: Integer, default: 1
 
+  #Elasticsearch index name
+  index_name 'myjobglasses_homework_user'
+  document_type 'user'
+
   after_update do |user|
     if user.skills_number <= 0
       user.destroy
